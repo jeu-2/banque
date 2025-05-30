@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Banque J.E.U. - Interface Client</title>
+
+<link href="https://jeu-2.github.io/banque/css/style.css" rel="stylesheet"/></head>
+<body>
+<nav class="navbar" id="navbar">
+<div class="nav-content">
+<div class="nav-logo">🌟 BANQUE J.E.U.</div>
+<ul class="nav-links">
+<li><a href="index.html#accueil">Accueil</a></li>
+<li><a href="index.html#fonctionnement">Fonctionnement</a></li>
+<li><a href="index.html#avantages">Avantages</a></li>
+<li><a href="index.html#contact">Contact</a></li>
+</ul>
+<div class="nav-buttons">
+<a class="btn-outline" href="index.html#connexion">Se connecter</a>
+<a class="btn-primary" href="index.html#inscription">S'inscrire</a>
+</div>
+</div>
+</nav>
+
+<!-- Header -->
+<div class="header">
+<h1>⚡ BANQUE J.E.U. ⚡</h1>
+<p>JARDIN D'ÉCHANGE UNIVERSEL - MONNAIE COMMUNAUTAIRE</p>
+</div>
+<!-- Dashboard Grid -->
+<div class="dashboard">
+<!-- Tableau de Bord Membre -->
+<div class="module-card fade-in-up">
+<div class="module-header">
+<span class="module-icon">👤</span>
+<h2 class="module-title">Tableau de Bord Membre</h2>
+</div>
+<div class="balance-display">
+<div class="user-name">Jean-François Tremblay</div>
+<div class="user-status">Membre Fondateur</div>
+<div class="balance-amount">2,450</div>
+<div class="balance-label">Points J.E.U. disponibles</div>
+<div class="member-code">Membre : JEU0000001</div>
+</div>
+<div class="stats-grid">
+<div class="stat-box">
+<span class="stat-number">47</span>
+<span class="stat-label">Échanges totaux</span>
+</div>
+<div class="stat-box">
+<span class="stat-number">12</span>
+<span class="stat-label">Partenaires actifs</span>
+</div>
+<div class="stat-box">
+<span class="stat-number">98%</span>
+<span class="stat-label">Score fiabilité</span>
+</div>
+<div class="stat-box">
+<span class="stat-number">5⭐</span>
+<span class="stat-label">Évaluation</span>
+</div>
+</div>
+</div>
+<!-- Nouvelle Offre -->
+<div class="module-card fade-in-up">
+<div class="module-header">
+<span class="module-icon">📢</span>
+<h2 class="module-title">Nouvelle Offre</h2>
+</div>
+<form id="offerForm">
+<div class="form-group">
+<label class="form-label">Titre de l'Offre</label>
+<input class="form-input" placeholder="Ex: Cours de cuisine italienne" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label">Type de l'Offre</label>
+<select class="form-select" required="">
+<option value="">Sélectionner un type...</option>
+<option value="speciale">Spéciale</option>
+<option value="saisonniere">Saisonnière</option>
+<option value="ponctuelle">Ponctuelle</option>
+<option value="continue">Continue</option>
+<option value="liquidation">Liquidation</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label">Catégorie</label>
+<select class="form-select" required="">
+<option value="">Sélectionner une catégorie...</option>
+<option value="hebergement">Hébergement</option>
+<option value="evenement">Événement</option>
+<option value="produit">Produit</option>
+<option value="service">Service</option>
+<option value="don">Don</option>
+<option value="bonus">Bonus</option>
+<option value="correctif">Correctif</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label">Montant (Points J.E.U.)</label>
+<input class="form-input" placeholder="Ex: 80" required="" type="number"/>
+</div>
+<div class="form-group">
+<label class="form-label">Description</label>
+<textarea class="form-textarea" placeholder="Décrivez votre offre en détail..." required=""></textarea>
+</div>
+<button class="btn-primary" type="submit">Publier l'Offre</button>
+</form>
+</div>
+<!-- Nouvelle Transaction -->
+<div class="module-card fade-in-up">
+<div class="module-header">
+<span class="module-icon">💎</span>
+<h2 class="module-title">Nouvelle Transaction</h2>
+</div>
+<form id="transactionForm">
+<div class="form-group">
+<label class="form-label">Type d'échange</label>
+<select class="form-select" required="">
+<option value="">Sélectionner un type...</option>
+<option value="service">Service</option>
+<option value="produit">Produit</option>
+<option value="formation">Formation</option>
+<option value="transport">Transport</option>
+<option value="autre">Autre</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label">Référence de l'Offre</label>
+<input class="form-input" placeholder="Ex: OFF-2025-rec0ptPxgXb1KsTfX" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label">Code du partenaire</label>
+<input class="form-input" placeholder="JEU0000001" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label">Montant (Points J.E.U.)</label>
+<input class="form-input" placeholder="Ex: 50" required="" type="number"/>
+</div>
+<div class="form-group">
+<label class="form-label">Description détaillée</label>
+<textarea class="form-textarea" placeholder="Décrivez précisément l'échange..." required=""></textarea>
+</div>
+<button class="btn-primary" type="submit">Enregistrer Transaction</button>
+</form>
+</div>
+<!-- Place du Marché -->
+<div class="module-card fade-in-up">
+<div class="module-header">
+<span class="module-icon">🏆</span>
+<h2 class="module-title">Place du Marché</h2>
+</div>
+<!-- Section de Recherche -->
+<div class="search-section">
+<input class="search-input" id="searchInput" placeholder="🔍 Rechercher une offre, un service, un produit..." type="text"/>
+<div class="search-filters">
+<button class="filter-btn active" data-category="services">Services</button>
+<button class="filter-btn" data-category="produits">Produits</button>
+<button class="filter-btn" data-category="evenements">Événements</button>
+</div>
+</div>
+<!-- Offres affichées -->
+<div id="offersContainer">
+<div class="marketplace-item" data-category="services">
+<div class="marketplace-header">
+<div class="marketplace-title">Cours de yoga privé</div>
+<div class="marketplace-price">80 pts</div>
+</div>
+<div class="marketplace-provider">Par Sylvie Martineau</div>
+<div class="marketplace-description">Disponible ce weekend</div>
+</div>
+<div class="marketplace-item" data-category="services">
+<div class="marketplace-header">
+<div class="marketplace-title">Réparation vélo expert</div>
+<div class="marketplace-price">60 pts</div>
+</div>
+<div class="marketplace-provider">Par Pierre Gagnon - Service garantie</div>
+<div class="marketplace-description">Réparation complète avec garantie 6 mois</div>
+</div>
+</div>
+</div>
+<!-- Historique des Transactions -->
+<div class="module-card fade-in-up">
+<div class="module-header">
+<span class="module-icon">📊</span>
+<h2 class="module-title">Historique des Transactions</h2>
+</div>
+<div class="transaction-item">
+<div class="transaction-info">
+<h4>Coiffure avec Marie Lavallée</h4>
+<div class="transaction-date">21 mai 2025 - 14:30</div>
+</div>
+<div class="transaction-amount negative">-150 pts</div>
+</div>
+<div class="transaction-item">
+<div class="transaction-info">
+<h4>Légumes bio du jardin</h4>
+<div class="transaction-date">20 mai 2025 - 09:15</div>
+</div>
+<div class="transaction-amount positive">+75 pts</div>
+</div>
+<div class="transaction-item">
+<div class="transaction-info">
+<h4>Garde d'enfants (3h)</h4>
+<div class="transaction-date">19 mai 2025 - 18:00</div>
+</div>
+<div class="transaction-amount positive">+200 pts</div>
+</div>
+<div class="transaction-item">
+<div class="transaction-info">
+<h4>Massage thérapeutique</h4>
+<div class="transaction-date">18 mai 2025 - 16:45</div>
+</div>
+<div class="transaction-amount negative">-125 pts</div>
+</div>
+</div>
+<!-- Messagerie Communautaire -->
+<div class="module-card fade-in-up">
+<div class="module-header">
+<span class="module-icon">💬</span>
+<h2 class="module-title">Messagerie Communautaire</h2>
+</div>
+<div class="message-item">
+<div class="message-header">
+<div class="message-sender">Pierre L.</div>
+<div class="message-time">Il y a 2h</div>
+</div>
+<div class="message-content">Salut ! J'ai des légumes frais à échanger contre des services de jardinage.</div>
+</div>
+<div class="message-item">
+<div class="message-header">
+<div class="message-sender">Sylvie M.</div>
+<div class="message-time">Hier</div>
+</div>
+<div class="message-content">Merci pour le massage ! Transaction parfaite comme toujours 😊</div>
+</div>
+<div class="message-compose">
+<textarea class="form-textarea" placeholder="Écrire un message à la communauté..." rows="3"></textarea>
+<button class="btn-primary" style="margin-top: 1rem;">Envoyer Message</button>
+</div>
+</div>
+</div>
+
+<footer class="footer">
+<div class="footer-content">
+<div class="footer-logo">🌟 BANQUE J.E.U.</div>
+<div class="footer-links">
+<a href="index.html#accueil">Accueil</a>
+<a href="index.html#fonctionnement">Fonctionnement</a>
+<a href="index.html#avantages">Avantages</a>
+<a href="index.html#contact">Contact</a>
+<a href="#">Conditions</a>
+<a href="#">Confidentialité</a>
+</div>
+<div class="footer-bottom">
+<p>© 2025 Banque J.E.U. - Jardin d'Échange Universel. Tous droits réservés.</p>
+<p>Une initiative du Consortium BICFIL-MULTI-PAAS-POEZIES sous l'autorité de Léna Mayël</p>
+</div>
+</div>
+</footer>
+<script src="https://jeu-2.github.io/banque/js/main.js"></script></body></html>
