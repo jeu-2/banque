@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profil Membre - Banque J.E.U.</title>
+  <link rel="stylesheet" href="/banque/css/style.css" />
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-content">
+      <div class="nav-logo">🌟 BANQUE J.E.U.</div>
+      <ul class="nav-links">
+        <li><a href="/banque/index.html#accueil">Accueil</a></li>
+        <li><a href="/banque/index.html#fonctionnement">Fonctionnement</a></li>
+        <li><a href="/banque/client/client.html">Espace Membre</a></li>
+        <li><a href="/banque/index.html#contact">Contact</a></li>
+      </ul>
+      <div class="nav-buttons">
+        <a class="btn-outline" href="/banque/index.html#connexion">Se connecter</a>
+        <a class="btn-primary" href="/banque/index.html#inscription">S'inscrire</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="header">
+    <h1>Profil Membre</h1>
+    <p>Informations personnelles & activité</p>
+  </div>
+
+  <div class="dashboard">
+    <!-- Infos personnelles -->
+    <div class="module-card fade-in-up">
+      <div class="module-header">
+        <span class="module-icon">🪪</span>
+        <h2 class="module-title">Informations personnelles</h2>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Nom complet</label>
+        <input class="form-input" type="text" value="Jean-François Tremblay" readonly />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Courriel</label>
+        <input class="form-input" type="email" value="jean.tremblay@example.com" readonly />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Téléphone</label>
+        <input class="form-input" type="tel" value="+1 514 123-4567" readonly />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Adresse</label>
+        <input class="form-input" type="text" value="Montréal, Québec" readonly />
+      </div>
+    </div>
+
+    <!-- Historique rapide -->
+    <div class="module-card fade-in-up">
+      <div class="module-header">
+        <span class="module-icon">📜</span>
+        <h2 class="module-title">Activité récente</h2>
+      </div>
+      <div class="transaction-item">
+        <div class="transaction-info">
+          <h4>Offre publiée : Atelier d'écriture</h4>
+          <div class="transaction-date">27 mai 2025</div>
+        </div>
+        <div class="transaction-amount positive">+100 pts</div>
+      </div>
+      <div class="transaction-item">
+        <div class="transaction-info">
+          <h4>Échange avec Sarah M. (Massage)</h4>
+          <div class="transaction-date">24 mai 2025</div>
+        </div>
+        <div class="transaction-amount negative">-120 pts</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">🌟 BANQUE J.E.U.</div>
+      <div class="footer-links">
+        <a href="/banque/index.html#accueil">Accueil</a>
+        <a href="/banque/index.html#fonctionnement">Fonctionnement</a>
+        <a href="#">Conditions</a>
+        <a href="#">Confidentialité</a>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Banque J.E.U. - Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="/banque/js/main.js"></script>
+</body>
+</html>
