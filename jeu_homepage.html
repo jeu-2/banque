@@ -619,60 +619,57 @@
         </div>
     </section>
 
-    <!-- Auth Section -->
-    <section id="inscription" class="section">
-        <div class="auth-section">
-            <h2 class="section-title">Rejoignez la communauté J.E.U.</h2>
-            <div class="auth-tabs">
-                <button class="tab-btn active" onclick="switchTab('signup')">S'inscrire</button>
-                <button class="tab-btn" onclick="switchTab('login')">Se connecter</button>
-            </div>
-            
-            <div id="signup-form" class="auth-form">
-                <form>
-                    <div class="form-group">
-                        <label class="form-label">Nom complet</label>
-                        <input type="text" class="form-input" placeholder="Votre nom et prénom" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Email</label>
-                        <input type="email" class="form-input" placeholder="votre@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Téléphone</label>
-                        <input type="tel" class="form-input" placeholder="(514) 123-4567" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Ville</label>
-                        <input type="text" class="form-input" placeholder="Votre ville" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Mot de passe</label>
-                        <input type="password" class="form-input" placeholder="••••••••" required>
-                    </div>
-                    <button type="submit" class="btn-primary" style="width: 100%; padding: 1.2rem; margin-top: 1rem;">Créer mon compte J.E.U.</button>
-                </form>
-            </div>
-
-            <div id="login-form" class="auth-form" style="display: none;">
-                <form>
-                    <div class="form-group">
-                        <label class="form-label">Email ou Code membre</label>
-                        <input type="text" class="form-input" placeholder="JEU-2024-XXX ou email" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Mot de passe</label>
-                        <input type="password" class="form-input" placeholder="••••••••" required>
-                    </div>
-                    <button type="submit" class="btn-primary" style="width: 100%; padding: 1.2rem; margin-top: 1rem;">Se connecter</button>
-                    <div style="text-align: center; margin-top: 1rem;">
-                        <a href="#" style="color: #ffd700; text-decoration: none; font-size: 0.9rem;">Mot de passe oublié ?</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
+   <!-- Auth Section -->
+<section class="section" id="inscription">
+<div class="auth-section">
+<h2 class="section-title">Rejoignez la communauté J.E.U.</h2>
+<div class="auth-tabs">
+<button class="tab-btn active" onclick="switchTab('signup')">S'inscrire</button>
+<button class="tab-btn" onclick="switchTab('login')">Se connecter</button>
+</div>
+<div class="auth-form" id="signup-form">
+<form>
+<div class="form-group">
+<label class="form-label">Nom complet</label>
+<input class="form-input" placeholder="Votre nom et prénom" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label">Email</label>
+<input class="form-input" placeholder="votre@email.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label class="form-label">Téléphone</label>
+<input class="form-input" placeholder="(514) 123-4567" required="" type="tel"/>
+</div>
+<div class="form-group">
+<label class="form-label">Ville</label>
+<input class="form-input" placeholder="Votre ville" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label">Mot de passe</label>
+<input class="form-input" placeholder="••••••••" required="" type="password"/>
+</div>
+<button class="btn-primary" style="width: 100%; padding: 1.2rem; margin-top: 1rem;" type="submit">Créer mon compte J.E.U.</button>
+</form>
+</div>
+<div class="auth-form" id="login-form" style="display: none;">
+<form>
+<div class="form-group">
+<label class="form-label">Email ou Code membre</label>
+<input class="form-input" placeholder="JEU-2024-XXX ou email" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label">Mot de passe</label>
+<input class="form-input" placeholder="••••••••" required="" type="password"/>
+</div>
+<button class="btn-primary" style="width: 100%; padding: 1.2rem; margin-top: 1rem;" type="submit">Se connecter</button>
+<div style="text-align: center; margin-top: 1rem;">
+<a href="#" style="color: #ffd700; text-decoration: none; font-size: 0.9rem;">Mot de passe oublié ?</a>
+</div>
+</form>
+</div>
+</div>
+</section>
     <!-- Contact Section -->
     <section id="contact" class="section">
         <h2 class="section-title">Nous contacter</h2>
