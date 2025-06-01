@@ -51,60 +51,122 @@
         </div>
 
         <!-- Nouvelle Offre -->
-        <div class="module-card fade-in-up">
+                <div class="module-card fade-in-up">
             <div class="module-header">
                 <span class="module-icon">📢</span>
                 <h2 class="module-title">Nouvelle Offre</h2>
             </div>
-            <form id="offerForm">
-                <div class="form-group">
-                    <!-- Titre -->
-                    <label class="form-label">Titre de l'Offre</label>
-                    <input type="text" class="form-input"  id="offreTitre" placeholder="Ex: Cours de cuisine italienne" required>
-                </div>
-                
-                <div class="form-group">
-                    <!-- Type -->
-                    <label class="form-label">Type de l'Offre</label>
-                    <select class="form-select"  id="offreType" required>
-                        <option value="">Sélectionner un type...</option>
-                        <option value="speciale">Spéciale</option>
-                        <option value="saisonniere">Saisonnière</option>
-                        <option value="ponctuelle">Ponctuelle</option>
-                        <option value="continue">Continue</option>
-                        <option value="liquidation">Liquidation</option>
-                    </select>
-                </div>
-                <div class="form-group">
+<!-- Code HTML mis à jour -->
+<!-- Voici un extrait clé corrigé pour la section "Nouvelle Offre" dans client.html -->
+<!-- 1. Ajout des id manquants dans le formulaire -->
 
-                        <!-- Catégorie -->                
-                    <label class="form-label">Catégorie</label>
-                    <select class="form-select" id="offreCategorie" required>
-                        <option value="">Sélectionner une catégorie...</option>
-                        <option value="hebergement">Hébergement</option>
-                        <option value="evenement">Événement</option>
-                        <option value="produit">Produit</option>
-                        <option value="service">Service</option>
-                        <option value="don">Don</option>
-                        <option value="bonus">Bonus</option>
-                        <option value="correctif">Correctif</option>
-                    </select>
-                            
-                </div>
-                <div class="form-group">
-                    <!-- Montant -->
-                    <label class="form-label">Montant (Points J.E.U.)</label>
-                    <input type="number" class="form-input" id="offrePrixPoints" placeholder="Ex: 80" required>
-                     
-                </div>
-                <div class="form-group">
-                    <!-- Description -->
-                    <label class="form-label">Description</label>
-                    <textarea class="form-textarea"  id="offreDescription" placeholder="Décrivez votre offre en détail..." required></textarea>
-                </div>
-                <button type="submit" class="btn-primary">Publier l'Offre</button>
-            </form>
-        </div>
+<form id="offerForm">
+  <div class="form-group">
+    <label class="form-label">Titre de l'Offre</label>
+    <input type="text" class="form-input" id="offreTitre" required>
+  </div>
+  <div class="form-group">
+    <label class="form-label">Type de l'Offre</label>
+    <select class="form-select" id="offreType" required>
+      <option value="">Sélectionner un type...</option>
+      <option value="spéciale">Spéciale</option>
+      <option value="saisonnière">Saisonnière</option>
+      <option value="ponctuelle">Ponctuelle</option>
+      <option value="continue">Continue</option>
+      <option value="liquidation">Liquidation</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label class="form-label">Catégorie</label>
+    <select class="form-select" id="offreCategorie" required>
+      <option value="">Sélectionner une catégorie...</option>
+      <option value="hébergement">Hébergement</option>
+      <option value="événement">Événement</option>
+      <option value="produit">Produit</option>
+      <option value="service">Service</option>
+      <option value="don">Don</option>
+      <option value="bonus">Bonus</option>
+      <option value="correctif">Correctif</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label class="form-label">Montant (Points J.E.U.)</label>
+    <input type="number" class="form-input" id="offrePrixPoints" required>
+  </div>
+  <div class="form-group">
+    <label class="form-label">Description</label>
+    <textarea class="form-textarea" id="offreDescription" required></textarea>
+  </div>
+  <button type="submit" class="btn-primary">Publier l'Offre</button>
+</form>
+
+<!-- 2. Script JavaScript intégré en bas de page -->
+<script>
+  document.getElementById("offerForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const titre = document.getElementById("offreTitre").value.trim();
+    const typeOffre = document.getElementById("offreType").value.trim();
+    const categorie = document.getElementById("offreCategorie").value.trim();
+    const prixPoints = parseInt(document.getElementById("offrePrixPoints").value.trim());
+    const description = document.getElementById("offreDescription").value.trim();
+
+    const membreProposant = "Jean-François Tremblay";
+    const dateCreation = new Date().toISOString().split("T")[0];
+
+    const data = {
+      titre,
+      membreProposant,
+      typeOffre,
+      categorie,
+      description,
+      prixPoints,
+      dureeQuantite: "",
+      avantages: "",
+      dateCreation,
+      dateLimite: "",
+      lieu: "",
+      images: [],
+      commentaires: ""
+    };
+
+    const button = e.target.querySelector("button[type='submit']");
+    const originalText = button.textContent;
+
+    button.textContent = "Publication...";
+    button.disabled = true;
+
+    try {
+      const response = await fetch("https://banque-api-jeu.onrender.com/api/offres", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        button.textContent = "✅ Offre publiée !";
+        e.target.reset();
+        if (typeof chargerOffres === "function") chargerOffres();
+      } else {
+        console.error(result);
+        alert("Erreur API : " + (result.message || "Erreur inconnue"));
+        button.textContent = "❌ Échec publication";
+      }
+
+    } catch (err) {
+      console.error("Erreur réseau :", err);
+      alert("Erreur réseau : " + err.message);
+      button.textContent = "❌ Erreur réseau";
+    }
+
+    setTimeout(() => {
+      button.textContent = originalText;
+      button.disabled = false;
+    }, 3000);
+  });
+</script></div>
 
         <!-- Nouvelle Transaction -->
         <div class="module-card fade-in-up">
