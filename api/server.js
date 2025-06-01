@@ -18,24 +18,24 @@ app.post("/api/offres", async (req, res) => {
 
     const createdRecord = await base("Offres").create({
       "Titre": titre,
-      "Membre Proposant": membreProposant || "Anonyme",
-      "Type d'offre": typeOffre || "",
-      "Catégorie": categorie || "",
-      "Description": description || "",
-      "Prix en points": prixPoints || 0,
-      "Durée/Quantité": dureeQuantite || "",
-      "Avantages": avantages || "",
-      "Date création": dateCreation || new Date().toISOString(),
-      "Date limite": dateLimite || "",
-      "Lieu": lieu || "",
-      "Images": images || [], // Doit être un tableau d'objets si tu utilises Airtable File field
-      "Commentaires": commentaires || ""
+      "Membre proposant": membreProposant,
+      "Type d'offre": typeOffre,
+      "Catégorie": categorie,
+      "Description": description,
+      "Prix en points": prixPoints,
+      "Durée/Quantité": dureeQuantite,
+      "Avantages": avantages,
+      "Date création": dateCreation,
+      "Date limite": dateLimite,
+      "Lieu": lieu,
+      "Images": images,
+      "Commentaires": commentaires
     });
 
     res.status(201).json({ message: "Offre ajoutée avec succès", id: createdRecord.id });
   } catch (error) {
-    console.error("Erreur API POST /api/offres :", error);
-    res.status(500).json({ message: "Erreur lors de l'ajout de l'offre" });
+    console.error("❌ Erreur API POST /api/offres :", error);
+    res.status(500).json({ message: error.message || "Erreur serveur inconnue" });
   }
 });
 
