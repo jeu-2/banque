@@ -1,3 +1,24 @@
+app.use(express.json()); // assure-toi que ceci est en haut
+
+app.post("/api/offres", async (req, res) => {
+  try {
+    const { titre, description, auteur, date, points } = req.body;
+
+    const createdRecord = await base("Offres").create({
+      "Titre": titre,
+      "Description": description,
+      "Auteur": auteur || "Anonyme",
+      "Date": date || new Date().toISOString(),
+      "Points": points || 0
+    });
+
+    res.status(201).json({ message: "Offre ajoutée avec succès", id: createdRecord.id });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Erreur lors de l'ajout de l'offre" });
+  }
+});
+
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
