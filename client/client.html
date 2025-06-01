@@ -58,12 +58,15 @@
             </div>
             <form id="offerForm">
                 <div class="form-group">
+                    <!-- Titre -->
                     <label class="form-label">Titre de l'Offre</label>
-                    <input type="text" class="form-input" placeholder="Ex: Cours de cuisine italienne" required>
+                    <input type="text" class="form-input"  id="offreTitre" placeholder="Ex: Cours de cuisine italienne" required>
                 </div>
+                
                 <div class="form-group">
+                    <!-- Type -->
                     <label class="form-label">Type de l'Offre</label>
-                    <select class="form-select" required>
+                    <select class="form-select"  id="offreType" required>
                         <option value="">Sélectionner un type...</option>
                         <option value="speciale">Spéciale</option>
                         <option value="saisonniere">Saisonnière</option>
@@ -73,8 +76,10 @@
                     </select>
                 </div>
                 <div class="form-group">
+
+                        <!-- Catégorie -->                
                     <label class="form-label">Catégorie</label>
-                    <select class="form-select" required>
+                    <select class="form-select" id="offreCategorie" required>
                         <option value="">Sélectionner une catégorie...</option>
                         <option value="hebergement">Hébergement</option>
                         <option value="evenement">Événement</option>
@@ -84,14 +89,18 @@
                         <option value="bonus">Bonus</option>
                         <option value="correctif">Correctif</option>
                     </select>
+                            
                 </div>
                 <div class="form-group">
+                    <!-- Montant -->
                     <label class="form-label">Montant (Points J.E.U.)</label>
-                    <input type="number" class="form-input" placeholder="Ex: 80" required>
+                    <input type="number" class="form-input" id="offrePrixPoints" placeholder="Ex: 80" required>
+                     
                 </div>
                 <div class="form-group">
+                    <!-- Description -->
                     <label class="form-label">Description</label>
-                    <textarea class="form-textarea" placeholder="Décrivez votre offre en détail..." required></textarea>
+                    <textarea class="form-textarea"  id="offreDescription" placeholder="Décrivez votre offre en détail..." required></textarea>
                 </div>
                 <button type="submit" class="btn-primary">Publier l'Offre</button>
             </form>
