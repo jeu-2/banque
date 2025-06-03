@@ -218,4 +218,37 @@
 </div>
 </div>
 </footer>
+<script>
+document.getElementById("loginForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const identifiant = document.getElementById("loginIdentifiant").value.trim();
+
+  try {
+    const response = await fetch("https://banque-api-jeu.onrender.com/api/membres");
+    const membres = await response.json();
+
+    const membre = membres.find(m =>
+      m.email.toLowerCase() === identifiant.toLowerCase() ||
+      m.code.toUpperCase() === identifiant.toUpperCase()
+    );
+
+    if (!membre) {
+      alert("❌ Membre introuvable");
+      return;
+    }
+
+    // Stocker l’ID Airtable du membre connecté
+    localStorage.setItem("recordId", membre.id);
+    localStorage.setItem("codeMembre", membre.code);
+    alert("✅ Connexion réussie : " + membre.nom);
+
+    // Rediriger vers la page client par exemple :
+    window.location.href = "https://jeu-2.github.io/banque/client/client.html";
+  } catch (err) {
+    console.error(err);
+    alert("Erreur réseau : impossible de se connecter");
+  }
+});
+</script>
 </body></html>
