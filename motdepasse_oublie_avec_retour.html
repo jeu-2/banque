@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mot de passe oublié - Banque J.E.U.</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0e0e20;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: #1a1a30;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 10px #ffd70080;
+    }
+    h1 {
+      text-align: center;
+      color: #ffd700;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.5rem;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+    }
+    button {
+      background: #ffd700;
+      color: black;
+      border: none;
+      padding: 0.8rem;
+      margin-top: 1.5rem;
+      width: 100%;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 1rem;
+      color: #ff6666;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔑 Mot de passe oublié</h1>
+    <form id="resetForm">
+      <label for="identifiant">Email ou Code Membre</label>
+      <input type="text" id="identifiant" required />
+      <button type="submit">Retrouver mon mot de passe</button>
+    </form>
+    <div class="result" id="resultMessage"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById("resetForm");
+    const resultMessage = document.getElementById("resultMessage");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const identifiant = document.getElementById("identifiant").value.trim().toLowerCase();
+
+      try {
+        const response = await fetch("https://banque-api-jeu.onrender.com/api/membres");
+        const membres = await response.json();
+        const membre = membres.find(m =>
+          (m.email && m.email.toLowerCase() === identifiant) ||
+          (m.code && m.code.toLowerCase() === identifiant)
+        );
+
+        if (!membre) {
+          resultMessage.textContent = "❌ Aucun compte trouvé avec cet identifiant.";
+          return;
+        }
+
+        resultMessage.style.color = "#00dd88";
+        resultMessage.textContent = `✅ Votre mot de passe est : ${membre.motdepasse}`;
+      } catch (err) {
+        console.error(err);
+        resultMessage.textContent = "❌ Erreur de connexion au serveur.";
+      }
+    });
+  </script>
+
+<div style="text-align: center; margin-top: 2rem;">
+  <a href="index.html" style="color: #ffd700; font-weight: bold;">← Retour à l'accueil</a>
+</div>
+
+</body>
+</html>
