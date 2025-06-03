@@ -11,6 +11,23 @@ app.use(express.json());
 
 const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.AIRTABLE_BASE_ID);
 
+app.get("/api/membres", async (req, res) => {
+  try {
+    const records = await base("Membres").select({ view: "Grid view" }).all();
+    const membres = records.map(record => ({
+      id: record.id,
+      nom: record.get("Nom") || "",
+      prenom: record.get("Prénom") || "",
+      email: record.get("Email") || "",
+      code: record.get("ID Membre") || ""
+    }));
+    res.json(membres);
+  } catch (error) {
+    console.error("Erreur GET /api/membres :", error);
+    res.status(500).json({ message: error.message || "Erreur serveur" });
+  }
+});
+
 app.get("/api/offres", async (req, res) => {
   try {
     const records = await base("Offres").select({ view: "Grid view" }).all();
