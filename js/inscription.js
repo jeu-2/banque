@@ -1,3 +1,4 @@
+fetch("https://banque-api-jeu.onrender.com/api/membres", { ... })
 // Préremplir prénom et nom depuis URL
 window.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
