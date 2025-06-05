@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inscription - Banque J.E.U.</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="modal_style.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>BANQUE J.E.U.</h1>
+    <nav>
+      <a href="connexion.html">Se connecter</a>
+    </nav>
+  </header>
+
+  <main>
+    <form id="formulaireInscription">
+      <label>Email <input type="email" id="email" required /></label>
+      <label>Téléphone <input type="tel" id="telephone" required /></label>
+      <label>Adresse <input type="text" id="adresse" required /></label>
+      <label>Mot de passe <input type="password" id="motdepasse" required /></label>
+      <button type="submit">Créer mon compte J.E.U.</button>
+    </form>
+  </main>
+
+  <!-- Modale -->
+  <div id="modalMessage" class="modal">
+    <div class="modal-content">
+      <span class="close-button" id="closeModal">&times;</span>
+      <p id="modalText">Message</p>
+    </div>
+  </div>
+
+  <script src="inscription.js" defer></script>
+</body>
+</html>
