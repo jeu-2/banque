@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espace Membre - Banque J.E.U.</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo"><a href="index.html">☀️ BANQUE J.E.U.</a></div>
+      <ul>
+        <li><a href="index.html#fonctionnement">Fonctionnement</a></li>
+        <li><a href="index.html#avantages">Avantages</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="connexion.html" class="btn-connexion">Se déconnecter</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="dashboard">
+    <h1>Bienvenue <span id="prenom"></span> <span id="nom"></span> à votre Espace J.E.U.</h1>
+    <p>Consultez vos échanges, votre solde et vos offres ici.</p>
+
+    <!-- Zone de données personnalisables à venir -->
+    <section class="infos">
+      <p>(Données Airtable à venir ici...)</p>
+    </section>
+  </main>
+
+  <script>
+    // Extraire le prénom et le nom depuis les paramètres d'URL
+    window.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const prenom = params.get("prenom") || "";
+      const nom = params.get("nom") || "";
+      document.getElementById("prenom").textContent = prenom;
+      document.getElementById("nom").textContent = nom;
+    });
+  </script>
+</body>
+</html>
