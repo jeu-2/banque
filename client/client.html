@@ -947,9 +947,8 @@
       userBar.style.background = "#222";
       userBar.style.color = "#ffd700";
       userBar.style.zIndex = "9999";
-      userBar.innerHTML = `👤 Connecté : <strong>${nom} (${code})</strong> <button id="logoutBtn" style="margin-left: 1rem; padding: 0.3rem 0.7rem;">Déconnexion</button>`;
+      userBar.innerHTML = `👤 Connecté : <strong>${nom} (${code})</strong> <button id="logoutBtn" style="margin-right: 30 px; padding: 20 px.33 px. 70 px" onclick="window.location.href='index.html'" class="btn-outline";>Déconnexion</button>`;
       document.body.appendChild(userBar);
-
       document.getElementById("logoutBtn").addEventListener("click", () => {
         localStorage.clear();
         window.location.href = "/";
