@@ -93,3 +93,25 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`✅ Serveur lancé sur le port ${PORT}`);
 });
+
+app.post('/api/membres', async (req, res) => {
+  try {
+    const { fields } = req.body;
+
+    const response = await axios.post(
+      `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Membres`,
+      { fields },
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+
+    res.status(201).json(response.data);
+  } catch (error) {
+    console.error('Erreur création membre:', error.message);
+    res.status(500).json({ error: 'Erreur serveur' });
+  }
+});
