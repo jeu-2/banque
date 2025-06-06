@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Banque J.E.U. - Jardin d'Échange Universel</title>
+<link href="css/style.css" rel="stylesheet"/></head>
+<script></script><script src="js/main.js"></script>
+<body>
+<!-- Navigation -->
+<nav class="navbar" id="navbar">
+<div class="nav-content">
+<a class="nav-logo" href="#accueil">🌟 BANQUE J.E.U.</a>
+<ul class="nav-links">
+<li><a href="#fonctionnement">Comment ça marche</a></li>
+<li><a href="#avantages">Avantages</a></li>
+<li><a href="#inscription">Rejoindre</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<div class="nav-buttons">
+<a class="btn-outline" href="#connexion">Se connecter</a>
+<a class="btn-primary" href="#inscription">S'inscrire</a>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="hero" id="accueil">
+<div class="hero-content">
+<h1 class="hero-title fade-in-up">Banque J.E.U.</h1>
+<p class="hero-subtitle fade-in-up">Jardin d'Échange Universel - La première monnaie communautaire hybride qui révolutionne les échanges locaux sans smartphone requis</p>
+<div class="hero-buttons fade-in-up">
+<a class="btn-primary" href="#inscription" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Rejoindre maintenant</a>
+<a class="btn-outline" href="#fonctionnement" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Découvrir</a>
+</div>
+<div class="hero-stats fade-in-up">
+<div class="stat-box">
+<span class="stat-number">500+</span>
+<span class="stat-label">Membres actifs</span>
+</div>
+<div class="stat-box">
+<span class="stat-number">2,500</span>
+<span class="stat-label">Échanges réalisés</span>
+</div>
+<div class="stat-box">
+<span class="stat-number">100%</span>
+<span class="stat-label">Sans frais</span>
+</div>
+<div class="stat-box">
+<span class="stat-number">24/7</span>
+<span class="stat-label">Disponibilité</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Section -->
+<section class="section" id="avantages">
+<h2 class="section-title">Pourquoi choisir la Banque J.E.U. ?</h2>
+<div class="features-grid">
+<div class="feature-card">
+<span class="feature-icon">📱</span>
+<h3 class="feature-title">Accessible à tous</h3>
+<p class="feature-description">Fonctionne avec un simple téléphone basique. Pas besoin de smartphone ou d'application complexe.</p>
+</div>
+<div class="feature-card">
+<span class="feature-icon">🔄</span>
+<h3 class="feature-title">Système hybride</h3>
+<p class="feature-description">Carnet papier + validation SMS/Email. Le meilleur des deux mondes pour votre sécurité.</p>
+</div>
+<div class="feature-card">
+<span class="feature-icon">💰</span>
+<h3 class="feature-title">100% Gratuit</h3>
+<p class="feature-description">Aucun frais, aucune commission. Échangez librement au sein de votre communauté.</p>
+</div>
+<div class="feature-card">
+<span class="feature-icon">🌍</span>
+<h3 class="feature-title">Économie locale</h3>
+<p class="feature-description">Renforcez les liens communautaires et soutenez l'économie de proximité.</p>
+</div>
+<div class="feature-card">
+<span class="feature-icon">🔐</span>
+<h3 class="feature-title">Sécurisé</h3>
+<p class="feature-description">Double validation et traçabilité complète de toutes vos transactions.</p>
+</div>
+<div class="feature-card">
+<span class="feature-icon">⚡</span>
+<h3 class="feature-title">Instantané</h3>
+<p class="feature-description">Transactions confirmées en temps réel par SMS et email.</p>
+</div>
+</div>
+</section>
+<!-- How it works -->
+<section class="section" id="fonctionnement">
+<h2 class="section-title">Comment ça fonctionne ?</h2>
+<div class="steps-grid">
+<div class="step-card">
+<div class="step-number">1</div>
+<h3 class="step-title">Inscription gratuite</h3>
+<p>Créez votre compte en 2 minutes et recevez votre carnet de points J.E.U. personnalisé.</p>
+</div>
+<div class="step-card">
+<div class="step-number">2</div>
+<h3 class="step-title">Notez l'échange</h3>
+<p>Inscrivez la transaction sur votre carnet papier avec les codes fournis.</p>
+</div>
+<div class="step-card">
+<div class="step-number">3</div>
+<h3 class="step-title">Validez par SMS</h3>
+<p>Envoyez un SMS avec le format : "JEU [code] [montant] [description]"</p>
+</div>
+<div class="step-card">
+<div class="step-number">4</div>
+<h3 class="step-title">Confirmation automatique</h3>
+<p>Recevez instantanément la confirmation par SMS et email avec votre nouveau solde.</p>
+</div>
+</div>
+</section>
+<!-- Auth Section -->
+<section class="section" id="inscription">
+<div class="auth-section">
+<h2 class="section-title">Rejoignez la communauté J.E.U.</h2>
+<div class="auth-tabs">
+<button class="tab-btn active" onclick="switchTab('signup')">S'inscrire</button>
+<button class="tab-btn" onclick="switchTab('login')">Se connecter</button>
+</div>
+<div class="auth-form" id="signup-form">
+<form>
+<div class="form-group">
+<label class="form-label">Prénom</label>
+<input class="form-input" name="prenom" placeholder="Prénom" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label">Nom</label>
+<input class="form-input" name="nom" placeholder="Nom" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label">Email</label>
+<input class="form-input" placeholder="votre@email.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label class="form-label">Téléphone</label>
+<input class="form-input" placeholder="(514) 123-4567" required="" type="tel"/>
+</div>
+<div class="form-group">
+<label class="form-label">Adresse</label>
+<input class="form-input" placeholder="Votre adresse complète" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label">Mot de passe</label>
+<input class="form-input" id="loginPassword" placeholder="••••••••" required="" type="password"/>
+</div>
+<button class="btn-primary" style="width: 100%; padding: 1.2rem; margin-top: 1rem;" type="submit">Créer mon compte J.E.U.</button>
+<div style="text-align: center; margin-top: 1rem;">
+<a href="motdepasse_oublie_avec_retour.html" style="color: #ffd700;">Mot de passe oublié ?</a>
+</div>
+</form>
+</div>
+<div class="auth-form" id="signup-form" style="display: none;">
+<form id="signupForm">
+<div class="form-group">
+<label class="form-label">Nom</label>
+<input class="form-input" id="signupNom" placeholder="Nom" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label">Prénom</label>
+<input class="form-input" id="signupPrenom" placeholder="Prénom" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label">Email</label>
+<input class="form-input" id="signupEmail" placeholder="votre@email.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label class="form-label">Mot de passe</label>
+<input class="form-input" id="signupPassword" placeholder="Créer un mot de passe" required="" type="password"/>
+</div>
+<button class="btn-primary" style="width: 100%; padding: 1.2rem; margin-top: 1rem;" type="submit">Créer un compte</button>
+<div style="text-align: center; margin-top: 1rem;">
+</div>
+</form>
+</div>
+</div>
+<div class="auth-form" id="login-form" style="display: none;">
+<form id="loginForm">
+<div class="form-group">
+<label class="form-label">Email ou Code membre</label>
+<input class="form-input" id="loginIdentifiant" placeholder="JEU0000001 ou email" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label">Mot de passe</label>
+<input class="form-input" id="loginPassword" placeholder="••••••••" required="" type="password"/>
+</div>
+<button class="btn-primary" onclick="window.location.href='connexion.html'" style="width: 100%; padding: 1.2rem; margin-top: 1rem;" type="button">Se connecter</button>
+<div style="text-align: center; margin-top: 1rem;">
+<a href="motdepasse_oublie_avec_retour.html" style="color: #ffd700; text-decoration: none; font-size: 0.9rem;">Mot de passe oublié ?</a>
+</div>
+<div style="text-align: center; margin-top: 1rem;">
+</div>
+</form>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="section" id="contact">
+<h2 class="section-title">Nous contacter</h2>
+<div class="contact-grid">
+<div class="contact-card">
+<div class="contact-icon">📞</div>
+<h3 class="contact-title">Validation SMS</h3>
+<div class="contact-info">
+<strong>1-XXX-JEU-BANK</strong><br/>
+                    Pour valider vos transactions<br/>
+                    Format: "JEU [code] [montant] [description]"
+                </div>
+</div>
+<div class="contact-card">
+<div class="contact-icon">📧</div>
+<h3 class="contact-title">Support Email</h3>
+<div class="contact-info">
+<strong>support@jeu-banque.ca</strong><br/>
+                    Confirmations automatiques<br/>
+                    Questions et assistance
+                </div>
+</div>
+<div class="contact-card">
+<div class="contact-icon">🏢</div>
+<h3 class="contact-title">Bureau principal</h3>
+<div class="contact-info">
+<strong>Montréal, QC</strong><br/>
+                    Consortium BICFIL-MULTI-PAAS-POEZIES<br/>
+                    Organisations accréditées
+                </div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="footer">
+<div class="footer-content">
+<div class="footer-logo">🌟 BANQUE J.E.U.</div>
+<div class="footer-links">
+<a href="#accueil">Accueil</a>
+<a href="#fonctionnement">Comment ça marche</a>
+<a href="#avantages">Avantages</a>
+<a href="#contact">Contact</a>
+<a href="motdepasse_oublie_avec_retour.html">Conditions</a>
+<a href="motdepasse_oublie_avec_retour.html">Confidentialité</a>
+</div>
+<div class="footer-bottom">
+<p>© 2025 Banque J.E.U. - Jardin d'Échange Universel. Tous droits réservés.</p>
+<p>Une initiative du Consortium BICFIL-MULTI-PAAS-POEZIES sous l'autorité de Léna Mayël</p>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("loginForm");
+  if (!form) return;
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const identifiant = document.getElementById("loginIdentifiant").value.trim();
+    const motdepasse = document.getElementById("loginPassword").value.trim();
+    const messageBox = document.createElement("div");
+    messageBox.style.marginTop = "1rem";
+
+    try {
+      localStorage.clear();
+      const response = await fetch("https://banque-api-jeu.onrender.com/api/membres");
+      const membres = await response.json();
+      const membre = membres.find(m =>
+        (m.email?.toLowerCase() === identifiant.toLowerCase() ||
+         m.code?.toUpperCase() === identifiant.toUpperCase()) &&
+        m.motdepasse === motdepasse
+      );
+
+      if (!membre) {
+        messageBox.textContent = "❌ Identifiant ou mot de passe incorrect.";
+        form.appendChild(messageBox);
+        return;
+      }
+
+      localStorage.setItem("recordId", membre.id);
+      localStorage.setItem("codeMembre", membre.code);
+      localStorage.setItem("nomMembre", membre.prenom + " " + membre.nom);
+      localStorage.setItem("emailMembre", membre.email);
+      messageBox.textContent = "✅ Connexion réussie. Redirection...";
+      form.appendChild(messageBox);
+      setTimeout(() => window.location.href = "client/client.html", 1200);
+    } catch (err) {
+      console.error(err);
+      messageBox.textContent = "❌ Erreur réseau.";
+      form.appendChild(messageBox);
+    }
+  });
+});
+</script>
+<script>
+function switchTab(tab) {
+  document.getElementById("loginForm").parentElement.style.display = tab === "login" ? "block" : "none";
+  document.getElementById("signup-form").style.display = tab === "signup" ? "block" : "none";
+}
+
+// Traitement inscription
+document.addEventListener("DOMContentLoaded", function () {
+  const signupForm = document.getElementById("signupForm");
+  if (!signupForm) return;
+
+  signupForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const nom = document.getElementById("signupNom").value.trim();
+    const prenom = document.getElementById("signupPrenom").value.trim();
+    const email = document.getElementById("signupEmail").value.trim();
+    const motdepasse = document.getElementById("signupPassword").value.trim();
+
+    try {
+      const response = await fetch("https://banque-api-jeu.onrender.com/api/membres", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nom, prenom, email, motdepasse })
+      });
+      const result = await response.json();
+      alert(result.message || "Inscription terminée.");
+      switchTab('login');
+    } catch (err) {
+      alert("Erreur d'inscription.");
+      console.error(err);
+    }
+  });
+});
+</script>
+</body></html>
