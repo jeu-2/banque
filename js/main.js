@@ -235,3 +235,59 @@ e.preventDefault();
 console.log('Formulaire soumis');
 });
 });
+
+document.querySelector('#signup-form form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const prenom = this.prenom.value.trim();
+  const nom = this.nom.value.trim();
+  const email = this.email.value.trim();
+  const telephone = this.telephone.value.trim();
+  const adresse = this.adresse.value.trim();
+  const motdepasse = this.motdepasse.value.trim(); // Attention : à sécuriser plus tard
+
+  const data = {
+    fields: {
+      Prenom: prenom,
+      Nom: nom,
+      Email: email,
+      Téléphone: telephone,
+      Adresse: adresse,
+      Motdepasse: motdepasse,
+      CodeMembre: `JEU${Date.now()}` // Exemple de génération unique
+    }
+  };
+
+  const btn = this.querySelector('button[type="submit"]');
+  const originalText = btn.textContent;
+  btn.textContent = 'Création...';
+  btn.disabled = true;
+
+  try {
+    const response = await fetch('http://localhost:3001/api/utilisateurs', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      btn.textContent = '✅ Compte créé !';
+      this.reset();
+    } else {
+      console.error(result);
+      alert('Erreur serveur : ' + (result.error || 'Inconnue'));
+      btn.textContent = '❌ Échec';
+    }
+  } catch (err) {
+    console.error(err);
+    alert('Erreur réseau : ' + err.message);
+    btn.textContent = '❌ Erreur';
+  }
+
+  setTimeout(() => {
+    btn.textContent = originalText;
+    btn.disabled = false;
+  }, 3000);
+});
