@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Banque J.E.U.</title>
+  <link rel="stylesheet" href="css/modal_style.css" />
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="js/inscription.js"></script>
+  <script src="js/inscription.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo"><a href="index.html">☀️ BANQUE J.E.U.</a></div>
+      <ul>
+        <li><a href="#fonctionnement">Comment ça marche</a></li>
+        <li><a href="#avantages">Avantages</a></li>
+        <li><a href="#rejoindre">Rejoindre</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="connexion.html" class="btn-connexion">Se connecter</a></li>
+        <li><a href="#inscription" class="btn-inscription">S'inscrire</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="section auth" id="inscription">
+    <h2>Rejoignez la communauté J.E.U.</h2>
+    <form id="formInscription" onsubmit="handleInscription(event)">
+      <input type="text" id="prenom" placeholder="Prénom" required />
+      <input type="text" id="nom" placeholder="Nom" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="tel" id="telephone" placeholder="Téléphone" required />
+      <input type="text" id="adresse" placeholder="Adresse complète" required />
+      <input type="password" id="motdepasse" placeholder="Mot de passe" required />
+      <button type="submit">Créer un compte</button>
+    </form>
+  </section>
+
+  <div id="successModal" class="modal">
+    <div class="modal-content">
+      <p id="successMessage"></p>
+    </div>
+  </div>
+</body>
+</html>
