@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banque J.E.U. - Interface Client</title>
+    <link href="/banque/css/style.css" rel="stylesheet"/>
+    <script src="/banque/js/main.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>⚡ BANQUE J.E.U. ⚡</h1>
+        <p>JARDIN D'ÉCHANGE UNIVERSEL - MONNAIE COMMUNAUTAIRE</p>
+    </div>
+
+    <!-- Dashboard Grid -->
+    <div class="dashboard">
+        <!-- Tableau de Bord Membre -->
+        <div class="module-card fade-in-up">
+            <div class="module-header">
+                <span class="module-icon">👤</span>
+                <h2 class="module-title">Tableau de Bord Membre</h2>
+            </div>
+            <div class="balance-display">
+                <div class="user-name" id="userNameDisplay">Chargement...</div>
+                <div class="user-status" id="userStatusDisplay">Chargement du statut...</div>
+                <div class="balance-amount" id="balanceDisplay">---</div>
+                <div class="balance-label">Points J.E.U. disponibles</div>
+                <div class="member-code" id="memberCodeDisplay">Membre : ---</div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <span class="stat-number" id="totalEchanges">0</span>
+                    <span class="stat-label">Échanges totaux</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number" id="partenairesActifs">0</span>
+                    <span class="stat-label">Partenaires actifs</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number" id="scorefiabilite">--</span>
+                    <span class="stat-label">Score fiabilité</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number" id="evaluation">--</span>
+                    <span class="stat-label">Évaluation</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nouvelle Offre -->
+        <div class="module-card fade-in-up">
+            <div class="module-header">
+                <span class="module-icon">📢</span>
+                <h2 class="module-title">Nouvelle Offre</h2>
+            </div>
+            <form id="offerForm">
+                <div class="form-group">
+                    <label class="form-label">Titre de l'Offre</label>
+                    <input type="text" class="form-input" placeholder="Ex: Cours de cuisine italienne" id="offreTitre" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Type de l'Offre</label>
+                    <select class="form-select" id="offreType" required>
+                        <option value="">Sélectionner un type...</option>
+                        <option value="speciale">Spéciale</option>
+                        <option value="saisonniere">Saisonnière</option>
+                        <option value="ponctuelle">Ponctuelle</option>
+                        <option value="continue">Continue</option>
+                        <option value="liquidation">Liquidation</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Catégorie</label>
+                    <select class="form-select" id="offreCategorie" required>
+                        <option value="">Sélectionner une catégorie...</option>
+                        <option value="hebergement">Hébergement</option>
+                        <option value="evenement">Événement</option>
+                        <option value="produit">Produit</option>
+                        <option value="service">Service</option>
+                        <option value="don">Don</option>
+                        <option value="bonus">Bonus</option>
+                        <option value="correctif">Correctif</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Montant (Points J.E.U.)</label>
+                    <input type="number" class="form-input" placeholder="Ex: 80" id="offrePrixPoints" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-textarea" placeholder="Décrivez votre offre en détail..." id="offreDescription" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Publier l'Offre</button>
+            </form>
+        </div>
+
+        <!-- Nouvelle Transaction -->
+        <div class="module-card fade-in-up">
+            <div class="module-header">
+                <span class="module-icon">💎</span>
+                <h2 class="module-title">Nouvelle Transaction</h2>
+            </div>
+            <form id="transactionForm">
+                <div class="form-group">
+                    <label class="form-label">Type d'échange</label>
+                    <select class="form-select" id="transactionType" required>
+                        <option value="">Sélectionner un type...</option>
+                        <option value="speciale">Spéciale</option>
+                        <option value="saisonniere">Saisonnière</option>
+                        <option value="ponctuelle">Ponctuelle</option>
+                        <option value="continue">Continue</option>
+                        <option value="liquidation">Liquidation</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Référence de l'Offre</label>
+                    <input type="text" class="form-input" placeholder="Ex: OFF-2025-rec0ptPxgXb1KsTfX" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Code du partenaire</label>
+                    <input type="text" class="form-input" placeholder="JEU0000001" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Montant (Points J.E.U.)</label>
+                    <input type="number" class="form-input" placeholder="Ex: 50" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Description détaillée</label>
+                    <textarea class="form-textarea" placeholder="Décrivez précisément l'échange..." required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Enregistrer Transaction</button>
+            </form>
+        </div>
+
+        <!-- Place du Marché -->
+        <div class="module-card fade-in-up">
+            <div class="module-header">
+                <span class="module-icon">🏆</span>
+                <h2 class="module-title">Place du Marché</h2>
+            </div>
+            
+            <!-- Section de Recherche -->
+            <div class="search-section">
+                <input type="text" class="search-input" placeholder="🔍 Rechercher une offre, un service, un produit..." id="searchInput">
+                <div class="search-filters">
+                    <button class="filter-btn active" data-category="services">Services</button>
+                    <button class="filter-btn" data-category="produits">Produits</button>
+                    <button class="filter-btn" data-category="evenements">Événements</button>
+                </div>
+            </div>
+
+            <!-- Offres affichées -->
+            <div id="offersContainer">
+                <div class="marketplace-item" data-category="services">
+                    <div class="marketplace-header">
+                        <div class="marketplace-title">Cours de yoga privé</div>
+                        <div class="marketplace-price">80 pts</div>
+                    </div>
+                    <div class="marketplace-provider">Par Sylvie Martineau</div>
+                    <div class="marketplace-description">Disponible ce weekend</div>
+                </div>
+                <div class="marketplace-item" data-category="services">
+                    <div class="marketplace-header">
+                        <div class="marketplace-title">Réparation vélo expert</div>
+                        <div class="marketplace-price">60 pts</div>
+                    </div>
+                    <div class="marketplace-provider">Par Pierre Gagnon - Service garantie</div>
+                    <div class="marketplace-description">Réparation complète avec garantie 6 mois</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Historique des Transactions -->
+        <div class="module-card fade-in-up">
+            <div class="module-header">
+                <span class="module-icon">📊</span>
+                <h2 class="module-title">Historique des Transactions</h2>
+            </div>
+            <div id="transactionsContainer">
+                <div class="transaction-item">
+                    <div class="transaction-info">
+                        <h4>Chargement des transactions...</h4>
+                        <div class="transaction-date">Veuillez patienter</div>
+                    </div>
+                    <div class="transaction-amount">--- pts</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Messagerie Communautaire -->
+        <div class="module-card fade-in-up">
+            <div class="module-header">
+                <span class="module-icon">💬</span>
+                <h2 class="module-title">Messagerie Communautaire</h2>
+            </div>
+            <div class="message-item">
+                <div class="message-header">
+                    <div class="message-sender">Pierre L.</div>
+                    <div class="message-time">Il y a 2h</div>
+                </div>
+                <div class="message-content">Salut ! J'ai des légumes frais à échanger contre des services de jardinage.</div>
+            </div>
+            <div class="message-item">
+                <div class="message-header">
+                    <div class="message-sender">Sylvie M.</div>
+                    <div class="message-time">Hier</div>
+                </div>
+                <div class="message-content">Merci pour le massage ! Transaction parfaite comme toujours 😊</div>
+            </div>
+            <div class="message-compose">
+                <textarea class="form-textarea" placeholder="Écrire un message à la communauté..." rows="3"></textarea>
+                <button class="btn-primary" style="margin-top: 1rem;">Envoyer Message</button>
+            </div>
+        </div>
+    </div>
+    <div style="height: 25px;"></div>
+    
+    <!-- Pied de page -->
+    <footer class="custom-footer" style="background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(20,20,40,0.95));
+        border-radius: 20px; margin-top: 3rem; border: 2px solid rgba(255,215,0,0.3); 
+        backdrop-filter: blur(20px); padding: 2rem; text-align: center;">
+        <div class="footer-content">
+            <div class="footer-logo" style="font-size: 1.5rem; font-weight: bold; color: #ffd700;">🌟 BANQUE J.E.U.</div>
+            <div class="footer-links" style="margin: 1rem 0;">
+                <a href="#accueil" style="margin: 0 0.5rem; color: #e8e8e8;">Accueil</a>
+                <a href="#fonctionnement" style="margin: 0 0.5rem; color: #e8e8e8;">Comment ça marche</a>
+                <a href="#avantages" style="margin: 0 0.5rem; color: #e8e8e8;">Avantages</a>
+                <a href="#contact" style="margin: 0 0.5rem; color: #e8e8e8;">Contact</a>
+                <a href="#" style="margin: 0 0.5rem; color: #e8e8e8;">Conditions</a>
+                <a href="#" style="margin: 0 0.5rem; color: #e8e8e8;">Confidentialité</a>
+            </div>
+            <div class="footer-bottom" style="color: #c9c9c9; font-size: 0.9rem;">
+                <p>© 2025 Banque J.E.U. - Jardin d'Échange Universel. Tous droits réservés.</p>
+                <p>Une initiative du Consortium BICFIL-MULTI-PAAS-POEZIES sous l'autorité de Léna Mayël</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Variables globales pour les données du membre
+        let membreData = null;
+        let soldeActuel = 0;
+
+        // Fonction pour charger les données du membre connecté
+        async function chargerDonneesMembre() {
+            const recordId = localStorage.getItem("recordId");
+            const codeMembre = localStorage.getItem("codeMembre");
+            
+            if (!recordId || !codeMembre) {
+                console.error("Aucun membre connecté");
+                redirectToLogin();
+                return;
+            }
+
+            try {
+                // Charger les données du membre
+                const response = await fetch(`https://banque-api-jeu.onrender.com/api/membres/${recordId}`);
+                if (!response.ok) {
+                    throw new Error(`Erreur HTTP: ${response.status}`);
+                }
+                
+                membreData = await response.json();
+                
+                // Mettre à jour l'affichage
+                updateDashboard();
+                
+                // Charger les transactions pour calculer le solde
+                await chargerTransactionsMembre();
+                
+            } catch (error) {
+                console.error("Erreur lors du chargement des données:", error);
+                afficherErreur("Impossible de charger les données du membre");
+            }
+        }
+
+        // Fonction pour mettre à jour le tableau de bord
+        function updateDashboard() {
+            if (!membreData) return;
+
+            // Nom complet du membre (Prénom + Nom)
+            const userNameEl = document.getElementById("userNameDisplay");
+            if (userNameEl) {
+                const prenom = membreData.Prénom || "";
+                const nom = membreData.Nom || "";
+                const nomComplet = `${prenom} ${nom}`.trim() || "Nom non disponible";
+                userNameEl.textContent = nomComplet;
+            }
+
+            // Statut du membre
+            const userStatusEl = document.getElementById("userStatusDisplay");
+            if (userStatusEl) {
+                const statut = membreData.Statut || "Membre Standard";
+                userStatusEl.textContent = statut;
+            }
+
+            // ID Membre (code membre)
+            const memberCodeEl = document.getElementById("memberCodeDisplay");
+            if (memberCodeEl) {
+                memberCodeEl.textContent = `Membre : ${membreData["ID Membre"] || "---"}`;
+            }
+
+            // Solde actuel
+            const balanceEl = document.getElementById("balanceDisplay");
+            if (balanceEl && membreData.Solde !== undefined) {
+                balanceEl.textContent = membreData.Solde.toLocaleString();
+            }
+
+            // Gains et dépenses pour les statistiques
+            const gainsEl = document.getElementById("totalEchanges");
+            if (gainsEl && membreData.Gains !== undefined) {
+                gainsEl.textContent = membreData.Gains;
+            }
+
+            const depensesEl = document.getElementById("partenairesActifs");
+            if (depensesEl && membreData.Dépenses !== undefined) {
+                depensesEl.textContent = membreData.Dépenses;
+            }
+
+            // Score de fiabilité (à calculer ou définir)
+            const scoreEl = document.getElementById("scorefiabilite");
+            if (scoreEl) {
+                scoreEl.textContent = "98%"; // Valeur par défaut
+            }
+
+            const evalEl = document.getElementById("evaluation");
+            if (evalEl) {
+                evalEl.textContent = "5⭐"; // Valeur par défaut
+            }
+        }
+
+        // Fonction pour charger les transactions et calculer le solde
+        async function chargerTransactionsMembre() {
+            const recordId = localStorage.getItem("recordId");
+            
+            try {
+                const response = await fetch(`https://banque-api-jeu.onrender.com/api/transactions?membre=${recordId}`);
+                if (!response.ok) {
+                    throw new Error(`Erreur HTTP: ${response.status}`);
+                }
+                
+                const transactions = await response.json();
+                
+                // Le solde est déjà dans les données du membre depuis Airtable
+                // Mais on peut aussi le calculer à partir des transactions si nécessaire
+                let soldeCalcule = 0;
+                let totalEchanges = 0;
+                let partenaires = new Set();
+
+                transactions.forEach(transaction => {
+                    if (transaction.membreEmetteur === recordId) {
+                        soldeCalcule -= transaction.montant;
+                    } else if (transaction.membreRecepteur === recordId) {
+                        soldeCalcule += transaction.montant;
+                    }
+                    totalEchanges++;
+                    
+                    // Ajouter les partenaires uniques
+                    if (transaction.membreEmetteur !== recordId) {
+                        partenaires.add(transaction.membreEmetteur);
+                    }
+                    if (transaction.membreRecepteur !== recordId) {
+                        partenaires.add(transaction.membreRecepteur);
+                    }
+                });
+
+                // Utiliser le solde d'Airtable si disponible, sinon le calculé
+                const soldeAffiche = membreData && membreData.Solde !== undefined ? 
+                    membreData.Solde : soldeCalcule;
+
+                // Mettre à jour l'affichage du solde
+                const balanceEl = document.getElementById("balanceDisplay");
+                if (balanceEl) {
+                    balanceEl.textContent = soldeAffiche.toLocaleString();
+                }
+
+                // Mettre à jour les statistiques avec les données réelles
+                const totalEchangesEl = document.getElementById("totalEchanges");
+                if (totalEchangesEl) {
+                    // Utiliser les Gains d'Airtable ou le nombre de transactions
+                    const gains = membreData && membreData.Gains !== undefined ? 
+                        membreData.Gains : totalEchanges;
+                    totalEchangesEl.textContent = gains;
+                }
+
+                const partenairesEl = document.getElementById("partenairesActifs");
+                if (partenairesEl) {
+                    // Utiliser les Dépenses d'Airtable ou le nombre de partenaires uniques
+                    const depenses = membreData && membreData.Dépenses !== undefined ? 
+                        membreData.Dépenses : partenaires.size;
+                    partenairesEl.textContent = depenses;
+                }
+
+                // Afficher les dernières transactions
+                afficherTransactions(transactions.slice(-4).reverse());
+
+            } catch (error) {
+                console.error("Erreur lors du chargement des transactions:", error);
+                
+                // Si erreur, utiliser au moins les données d'Airtable
+                if (membreData) {
+                    const balanceEl = document.getElementById("balanceDisplay");
+                    if (balanceEl && membreData.Solde !== undefined) {
+                        balanceEl.textContent = membreData.Solde.toLocaleString();
+                    }
+                }
+            }
+        }
+
+        // Fonction pour afficher les transactions
+        function afficherTransactions(transactions) {
+            const container = document.getElementById("transactionsContainer");
+            if (!container || !transactions.length) return;
+
+            container.innerHTML = transactions.map(transaction => {
+                const recordId = localStorage.getItem("recordId");
+                const isDebit = transaction.membreEmetteur === recordId;
+                const montant = isDebit ? -transaction.montant : transaction.montant;
+                const classe = isDebit ? "negative" : "positive";
+                const signe = isDebit ? "-" : "+";
+
+                const date = new Date(transaction.dateTransaction);
+                const dateFormatee = date.toLocaleDateString('fr-FR', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+
+                return `
+                    <div class="transaction-item">
+                        <div class="transaction-info">
+                            <h4>${transaction.description || "Transaction"}</h4>
+                            <div class="transaction-date">${dateFormatee}</div>
+                        </div>
+                        <div class="transaction-amount ${classe}">${signe}${Math.abs(montant)} pts</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Fonction pour rediriger vers la page de connexion
+        function redirectToLogin() {
+            localStorage.clear();
+            window.location.href = '/';
+        }
+
+        // Fonction pour gérer la déconnexion
+        function logout() {
+            localStorage.clear();
+            window.location.href = '/';
+        }
+
+        // Fonction pour afficher les erreurs
+        function afficherErreur(message) {
+            console.error(message);
+            // Vous pouvez ajouter ici une notification visuelle
+        }
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.module-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submissions
+        document.getElementById('transactionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleFormSubmission(e, 'Transaction Enregistrée !');
+        });
+
+        document.getElementById('offerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleFormSubmission(e, 'Offre Publiée !');
+        });
+
+        function handleFormSubmission(e, successMessage) {
+            const button = e.target.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            button.textContent = 'Traitement en cours...';
+            button.style.background = 'linear-gradient(45deg, #ffed4a, #ffd700)';
+            
+            setTimeout(() => {
+                button.textContent = '✅ ' + successMessage;
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 3000);
+            }, 1500);
+        }
+
+        // Gestion des offres
+        document.getElementById("offerForm").addEventListener("submit", async function(e) {
+            e.preventDefault();
+
+            const titre = document.getElementById("offreTitre").value.trim();
+            const typeOffre = document.getElementById("offreType").value.trim();
+            const categorie = document.getElementById("offreCategorie").value.trim();
+            const prixPoints = parseInt(document.getElementById("offrePrixPoints").value.trim());
+            const description = document.getElementById("offreDescription").value.trim();
+
+            const membreProposant = localStorage.getItem("recordId");
+            const dateCreation = new Date().toISOString().split("T")[0];
+
+            const data = {
+                titre,
+                membreProposant,
+                typeOffre,
+                categorie,
+                description,
+                prixPoints,
+                dureeQuantite: "",
+                avantages: "",
+                dateCreation,
+                dateLimite: "",
+                lieu: "",
+                images: [],
+                commentaires: ""
+            };
+
+            const button = e.target.querySelector("button[type='submit']");
+            const originalText = button.textContent;
+
+            button.textContent = "Publication...";
+            button.disabled = true;
+
+            try {
+                const response = await fetch("https://banque-api-jeu.onrender.com/api/offres", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    button.textContent = "✅ Offre publiée !";
+                    e.target.reset();
+                    if (typeof chargerOffres === "function") chargerOffres();
+                } else {
+                    console.error(result);
+                    alert("Erreur API : " + (result.message || "Erreur inconnue"));
+                    button.textContent = "❌ Échec publication";
+                }
+
+            } catch (err) {
+                console.error("Erreur réseau :", err);
+                alert("Erreur réseau : " + err.message);
+                button.textContent = "❌ Erreur réseau";
+            }
+
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.disabled = false;
+            }, 3000);
+        });
+
+        // Initialisation au chargement de la page
+        document.addEventListener("DOMContentLoaded", function () {
+            // Vérifier si l'utilisateur est connecté
+            const recordId = localStorage.getItem("recordId");
+            const nomMembre = localStorage.getItem("nomMembre");
+            const codeMembre = localStorage.getItem("codeMembre");
+
+            if (!recordId || !nomMembre || !codeMembre) {
+                console.error("Utilisateur non connecté");
+                redirectToLogin();
+                return;
+            }
+
+            // Charger les données du membre
+            chargerDonneesMembre();
+
+            // Créer la barre d'utilisateur connecté
+            const userBar = document.createElement("div");
+            userBar.style.position = "fixed";
+            userBar.style.top = "0";
+            userBar.style.right = "0";
+            userBar.style.padding = "0.5rem 1rem";
+            userBar.style.background = "#222";
+            userBar.style.color = "#ffd700";
+            userBar.style.zIndex = "9999";
+            userBar.style.borderRadius = "0 0 0 10px";
+            userBar.innerHTML = `
+                👤 Connecté : <strong>${nomMembre} (${codeMembre})</strong> 
+                <button id="logoutBtn" style="margin-left: 15px; padding: 5px 10px; background: #ff4444; color: white; border: none; border-radius: 5px; cursor: pointer;">Déconnexion</button>
+            `;
+            document.body.appendChild(userBar);
+
+            // Gestionnaire de déconnexion
+            document.getElementById("logoutBtn").addEventListener("click", function() {
+                if (confirm("Êtes-vous sûr de vouloir vous déconnecter ?")) {
+                    logout();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
