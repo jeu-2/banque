@@ -114,6 +114,8 @@
         localStorage.setItem("codeMembre", membre.code);
         localStorage.setItem("nomMembre", membre.prenom + " " + membre.nom);
         localStorage.setItem("emailMembre", membre.email);
+        localStorage.setItem("statutMembre", membre.statut); 
+        localStorage.setItem("soldeMembre", membre.solde);
 
         resultMessage.style.color = "#00dd88";
         resultMessage.textContent = "✅ Connexion réussie. Redirection...";
