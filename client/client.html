@@ -849,7 +849,17 @@
             }, 1500);
         }
     </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const nom = localStorage.getItem("nomMembre");
+  const code = localStorage.getItem("codeMembre");
 
+  if (!nom || !code) {
+    alert("Veuillez vous connecter pour accéder à l'espace membre.");
+    window.location.href = "index.html"; // ou login.html
+  }
+});
+</script>
 <script>
   document.getElementById("offerForm").addEventListener("submit", async function(e) {
     e.preventDefault();
