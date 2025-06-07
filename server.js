@@ -1,17 +1,27 @@
+// ========== DEPENDANCES ==========
+const express = require("express");
+const dotenv = require("dotenv");
+const Airtable = require("airtable");
+const cors = require("cors");
 
-import express from "express";
-import dotenv from "dotenv";
-import Airtable from "airtable";
-import cors from "cors";
-
+// ========== CONFIGURATION ==========
 dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.AIRTABLE_BASE_ID);
+const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY })
+  .base(process.env.AIRTABLE_BASE_ID);
 
+// ========== ROUTES ==========
+
+// Test de vie
+app.get("/", (req, res) => {
+  res.send("✅ API Banque J.E.U. opérationnelle");
+});
+
+// 🔹 Récupérer toutes les offres
 app.get("/api/offres", async (req, res) => {
   try {
     const records = await base("Offres").select({ view: "Grid view" }).all();
@@ -30,6 +40,7 @@ app.get("/api/offres", async (req, res) => {
   }
 });
 
+// 🔹 Ajouter une offre
 app.post("/api/offres", async (req, res) => {
   try {
     const {
@@ -71,6 +82,7 @@ app.post("/api/offres", async (req, res) => {
   }
 });
 
+// 🔹 Tous les membres (optionnel)
 app.get("/api/membres", async (req, res) => {
   try {
     const records = await base("Membres").select({ view: "Grid view" }).all();
@@ -89,29 +101,33 @@ app.get("/api/membres", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`✅ Serveur lancé sur le port ${PORT}`);
+// 🔹 Membre par ID (tableau de bord)
+app.get("/api/membres/:id", async (req, res) => {
+  try {
+    const record = await base("Membres").find(req.params.id);
+    res.json({
+      id: record.id,
+      nom: record.get("Nom") || "",
+      prenom: record.get("Prénom") || "",
+      email: record.get("Email") || "",
+      code: record.get("ID Membre") || "",
+      statut: record.get("Statut") || "",
+      solde: record.get("Solde") || 0,
+      stats: {
+        nbEchanges: record.get("Échanges totaux") || 0,
+        nbPartenaires: record.get("Partenaires actifs") || 0,
+        fiabilite: record.get("Score fiabilité") || "N/A",
+        evaluation: record.get("Évaluation") || "-"
+      }
+    });
+  } catch (error) {
+    console.error("Erreur GET /api/membres/:id :", error);
+    res.status(404).json({ message: "Membre introuvable" });
+  }
 });
 
-app.post('/api/membres', async (req, res) => {
-  try {
-    const { fields } = req.body;
-
-    const response = await axios.post(
-      `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Membres`,
-      { fields },
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
-          'Content-Type': 'application/json'
-        }
-      }
-    );
-
-    res.status(201).json(response.data);
-  } catch (error) {
-    console.error('Erreur création membre:', error.message);
-    res.status(500).json({ error: 'Erreur serveur' });
-  }
+// ========== LANCEMENT ==========
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`✅ Serveur lancé sur le port ${port}`);
 });
