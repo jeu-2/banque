@@ -990,6 +990,31 @@ async function chargerHistorique() {
         localStorage.clear();
         window.location.href = "/";
       });
+
+if (!code) {
+  alert("Pas de membre connecté");
+  window.location.href = "index.html";
+} else {
+  fetch(`https://banque-api-jeu.onrender.com/api/membres/${code}`)
+    .then(res => res.json())
+    .then(membre => {
+      document.querySelector(".user-name").textContent = membre.nom;
+      document.querySelector(".member-code").textContent = "Membre : " + membre.code;
+      document.querySelector(".user-status").textContent = membre.statut;
+      document.querySelector(".balance-amount").textContent = `${membre.solde} pts`;
+
+      const statsEls = document.querySelectorAll(".stat-number");
+      statsEls[0].textContent = membre.stats.nbEchanges;
+      statsEls[1].textContent = membre.stats.nbPartenaires;
+      statsEls[2].textContent = membre.stats.fiabilite;
+      statsEls[3].textContent = membre.stats.evaluation;
+    })
+    .catch(err => {
+      console.error("Erreur chargement membre :", err);
+      alert("Impossible de charger les données du membre.");
+    });
+}
+ 
     }
   });
 </script>
