@@ -57,6 +57,15 @@ const observer = new IntersectionObserver(function (entries) {
     });
 }, observerOptions);
 
+// Form submissions
+document.querySelectorAll('form').forEach(form => {
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    // Vous pouvez ajouter ici la logique de soumission des formulaires
+    console.log('Formulaire soumis');
+  });
+});
+
 // Observer all sections and cards
 document.querySelectorAll('.section, .feature-card, .step-card').forEach(el => {
     observer.observe(el);
