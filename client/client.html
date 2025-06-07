@@ -376,6 +376,8 @@
   document.addEventListener("DOMContentLoaded", function () {
     const nom = localStorage.getItem("nomMembre");
     const code = localStorage.getItem("codeMembre");
+    const statut = localStorage.getItem("statutMembre");
+    const solde = localStorage.getItem("soldeMembre");
 
     if (nom && code) {
       const nameEl = document.querySelector(".user-name");
@@ -395,17 +397,17 @@
     if (nom && code) {
       const userBar = document.createElement("div");
       userBar.style.position = "fixed";
-      userBar.style.top = "0";
-      userBar.style.right = "0";
+      userBar.style.top = "50";
+      userBar.style.right = "70";
       userBar.style.padding = "0.5rem 1rem";
       userBar.style.background = "#222";
       userBar.style.color = "#ffd700";
       userBar.style.zIndex = "9999";
-      userBar.innerHTML = `👤 Connecté : <strong>${nom} (${code})</strong> <button id="logoutBtn" style="margin-right: 30 px; padding: 20 px.33 px. 70 px" onclick="window.location.href='index.html'" class="btn-outline";>Déconnexion</button>`;
+      userBar.innerHTML = `👤 Connecté : <strong>${nom} (${code})</strong> <button id="logoutBtn" style="margin-right: 30 px; padding: 20 px.33 px. 70 px" onclick="window.location.href='https://eu-2.github.io/banque/'" class="btn-outline";>Déconnexion</button>`;
       document.body.appendChild(userBar);
       document.getElementById("logoutBtn").addEventListener("click", () => {
         localStorage.clear();
-        window.location.href = "/";
+        window.location.href = "https://eu-2.github.io/banque/";
       });
     }
   });
