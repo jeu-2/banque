@@ -510,6 +510,85 @@
     text-align: center;
 }
 
+.custom-footer .footer-content {
+    color: #e8e8e8;
+}
+
+.custom-footer .footer-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffd700;
+    margin-bottom: 1rem;
+}
+
+.custom-footer .footer-links {
+    margin: 1rem 0;
+}
+
+.custom-footer .footer-links a {
+    margin: 0 0.5rem;
+    color: #e8e8e8;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 400;
+}
+
+.custom-footer .footer-links a:hover {
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255,215,0,0.3);
+}
+
+.custom-footer .footer-bottom {
+    color: #c9c9c9;
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(255,215,0,0.2);
+    padding-top: 1rem;
+}
+
+.custom-footer .footer-bottom p {
+    margin: 0.5rem 0;
+    line-height: 1.4;
+}
+
+/* Responsive pour le footer client - cohérent avec le reste */
+@media (max-width: 768px) {
+    .custom-footer {
+        padding: 1.5rem;
+        margin-top: 2rem;
+        border-radius: 15px;
+    }
+    
+    .custom-footer .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        margin: 1.5rem 0;
+    }
+    
+    .custom-footer .footer-links a {
+        margin: 0;
+        padding: 0.5rem;
+        border-radius: 8px;
+        background: rgba(30,30,50,0.3);
+        border: 1px solid rgba(255,215,0,0.1);
+    }
+    
+    .custom-footer .footer-links a:hover {
+        background: rgba(255,215,0,0.1);
+        border-color: rgba(255,215,0,0.3);
+    }
+    
+    .custom-footer .footer-logo {
+        font-size: 1.3rem;
+    }
+    
+    .custom-footer .footer-bottom {
+        font-size: 0.85rem;
+    }
+}
+
+
 /* Espacement sous le tableau de bord */
 .spacer {
     height: 25px;
