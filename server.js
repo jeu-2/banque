@@ -102,9 +102,20 @@ app.get("/api/membres", async (req, res) => {
 });
 
 // 🔹 Membre par ID (tableau de bord)
-app.get("/api/membres/:id", async (req, res) => {
+app.get("/api/membres/:code", async (req, res) => {
   try {
-    const record = await base("Membres").find(req.params.id);
+    const records = await base("Membres")
+      .select({
+        filterByFormula: `{ID Membre} = '${req.params.code}'`,
+        maxRecords: 1
+      })
+      .firstPage();
+
+    if (records.length === 0) {
+      return res.status(404).json({ message: "Membre introuvable" });
+    }
+
+    const record = records[0];
     res.json({
       id: record.id,
       nom: record.get("Nom") || "",
@@ -120,9 +131,10 @@ app.get("/api/membres/:id", async (req, res) => {
         evaluation: record.get("Évaluation") || "-"
       }
     });
-  } catch (error) {
-    console.error("Erreur GET /api/membres/:id :", error);
-    res.status(404).json({ message: "Membre introuvable" });
+
+  } catch (err) {
+    console.error("Erreur GET /api/membres/:code :", err);
+    res.status(500).json({ message: "Erreur serveur" });
   }
 });
 
