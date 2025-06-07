@@ -956,6 +956,23 @@
     }
   });
 </script>
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const recordId = localStorage.getItem("recordId");
+    if (!recordId) return;
 
+    const response = await fetch(`https://banque-api-jeu.onrender.com/api/membres/${recordId}`);
+    const data = await response.json();
+
+    document.querySelector(".user-name").textContent = data.nom;
+    document.querySelector(".user-status").textContent = data.statut || "Membre";
+    document.querySelector(".balance-amount").textContent = data.solde + " pts";
+    document.querySelector(".member-code").textContent = "Membre : " + data.code;
+    // Pour les stats, remplir les .stat-number
+
+  } catch (e) {
+    console.error("Erreur chargement infos :", e);
+  }
+});
 </body>
 </html>
