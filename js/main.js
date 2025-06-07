@@ -93,3 +93,11 @@ document.querySelectorAll('.section, .feature-card, .step-card').forEach(el => {
     }
   });
 </script>
+
+<script>
+const nom = localStorage.getItem("nomMembre");
+const code = localStorage.getItem("codeMembre");
+if (!nom || !code) {
+  window.location.href = "https://jeu-2.github.io/banque/connexion.html"; // Rediriger vers la page de connexion
+}
+</script>
