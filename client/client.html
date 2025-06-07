@@ -860,6 +860,33 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 </script>
+
+<script>
+async function chargerHistorique() {
+  const recordId = localStorage.getItem("recordId");
+  const res = await fetch(`https://banque-api-jeu.onrender.com/api/transactions?membre=${recordId}`);
+  const data = await res.json();
+  
+  const container = document.querySelector(".module-card .transaction-item").parentElement;
+  container.innerHTML = ""; // efface l’existant
+  
+  data.forEach(tx => {
+    const div = document.createElement("div");
+    div.className = "transaction-item";
+    div.innerHTML = `
+      <div class="transaction-info">
+        <h4>${tx.titre}</h4>
+        <div class="transaction-date">${new Date(tx.date).toLocaleString("fr-FR")}</div>
+      </div>
+      <div class="transaction-amount ${tx.sens === "sortie" ? "negative" : "positive"}">
+        ${tx.sens === "sortie" ? "-" : "+"}${tx.montant} pts
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
+</script>
+    
 <script>
   document.getElementById("offerForm").addEventListener("submit", async function(e) {
     e.preventDefault();
