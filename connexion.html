@@ -105,6 +105,9 @@
           (m.code && m.code.toLowerCase() === identifiant.toLowerCase())
         );
 
+
+
+        
         if (!membre || membre.motdepasse !== password) {
           resultMessage.textContent = "❌ Identifiant ou mot de passe incorrect.";
           return;
@@ -115,8 +118,7 @@
         localStorage.setItem("nomMembre", membre.prenom + " " + membre.nom);
         localStorage.setItem("emailMembre", membre.email);
         localStorage.setItem("statutMembre", membre.statut); 
-        localStorage.setItem("soldeMembre", membre.solde);
-
+        localStorage.setItem("soldeMembre", membre.solde); 
         resultMessage.style.color = "#00dd88";
         resultMessage.textContent = "✅ Connexion réussie. Redirection...";
         setTimeout(() => {
@@ -127,6 +129,7 @@
         resultMessage.textContent = "❌ Erreur réseau.";
       }
     });
+   
   </script>
 </body>
 </html>
