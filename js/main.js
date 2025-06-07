@@ -61,3 +61,35 @@ const observer = new IntersectionObserver(function (entries) {
 document.querySelectorAll('.section, .feature-card, .step-card').forEach(el => {
     observer.observe(el);
 });
+
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const recordId = localStorage.getItem("recordId");
+    if (!recordId) {
+      alert("Aucun membre connecté. Redirection...");
+      return window.location.href = "index.html";
+    }
+
+    try {
+      const res = await fetch(`https://banque-api-jeu.onrender.com/api/membres/${recordId}`);
+      if (!res.ok) throw new Error("Réponse API non valide");
+      const data = await res.json();
+
+      document.querySelector(".user-name").textContent = data.nom || "Utilisateur";
+      document.querySelector(".user-status").textContent = data.statut || "Membre";
+      document.querySelector(".balance-amount").textContent = `${data.solde} pts`;
+      document.querySelector(".member-code").textContent = `Membre : ${data.code}`;
+
+      // Exemple pour les stats (si l’API les fournit)
+      const stats = data.stats || { echanges: 0, partenaires: 0, fiabilite: "N/A", evaluation: "-" };
+      document.querySelectorAll(".stat-number")[0].textContent = stats.echanges;
+      document.querySelectorAll(".stat-number")[1].textContent = stats.partenaires;
+      document.querySelectorAll(".stat-number")[2].textContent = stats.fiabilite;
+      document.querySelectorAll(".stat-number")[3].textContent = stats.evaluation;
+
+    } catch (err) {
+      console.error("Erreur chargement données :", err);
+      alert("Impossible de charger les informations du membre.");
+    }
+  });
+</script>
